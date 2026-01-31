@@ -1,0 +1,14 @@
+{
+  "name": "week1-scrum-foundations",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "latest",
+    "@slidev/theme-default": "latest",
+    "light-icons": "^1.0.2"
+  }
+}

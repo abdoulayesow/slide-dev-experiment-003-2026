@@ -1,0 +1,306 @@
+/* PSM Dark Theme for Slidev
+ * A professional dark theme with cyan accents
+ * Designed for training and presentation materials
+ */
+
+/* ==========================================
+   CSS Variables - Theme Colors
+   ========================================== */
+
+:root {
+  /* Background Colors */
+  --color-background: #1a1a2e;
+  --color-background-soft: #1e1e32;
+  --color-card: #2d2d44;
+  --color-card-hover: #363654;
+
+  /* Primary Accent - Cyan Blue */
+  --color-primary: #0ea5e9;
+  --color-primary-light: #38bdf8;
+  --color-primary-dark: #0284c7;
+
+  /* Semantic Colors */
+  --color-success: #10b981;
+  --color-success-light: #34d399;
+  --color-warning: #f59e0b;
+  --color-warning-light: #fbbf24;
+  --color-danger: #ef4444;
+  --color-danger-light: #f87171;
+
+  /* Secondary - Purple */
+  --color-secondary: #8b5cf6;
+  --color-secondary-light: #a78bfa;
+
+  /* Text Colors */
+  --color-text: #ffffff;
+  --color-text-soft: #e2e8f0;
+  --color-muted: #94a3b8;
+  --color-muted-dark: #64748b;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  --gradient-success: linear-gradient(135deg, var(--color-success) 0%, #059669 100%);
+  --gradient-warning: linear-gradient(135deg, var(--color-warning) 0%, #d97706 100%);
+  --gradient-danger: linear-gradient(135deg, var(--color-danger) 0%, #dc2626 100%);
+
+  /* Shadows */
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+}
+
+/* ==========================================
+   Base Slidev Overrides
+   ========================================== */
+
+/* Slide background */
+.slidev-layout {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+/* Default slide padding */
+.slidev-layout.default {
+  padding: var(--space-xl) var(--space-2xl);
+}
+
+/* Cover layout */
+.slidev-layout.cover {
+  background: var(--gradient-primary);
+}
+
+/* Center layout */
+.slidev-layout.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================
+   Typography
+   ========================================== */
+
+/* Headings */
+h1 {
+  color: var(--color-primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--space-lg);
+}
+
+h2 {
+  color: var(--color-text);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+}
+
+h3 {
+  color: var(--color-text-soft);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+
+/* Subtitle / muted text */
+.subtitle,
+.text-muted {
+  color: var(--color-muted);
+  font-size: 1.125rem;
+}
+
+/* ==========================================
+   Lists
+   ========================================== */
+
+ul, ol {
+  margin: var(--space-md) 0;
+  padding-left: var(--space-lg);
+}
+
+li {
+  margin-bottom: var(--space-sm);
+  line-height: 1.6;
+}
+
+/* Custom bullet style */
+ul li::marker {
+  color: var(--color-primary);
+}
+
+/* ==========================================
+   Code Blocks
+   ========================================== */
+
+code {
+  background-color: var(--color-card);
+  border-radius: var(--radius-sm);
+  padding: 0.125rem 0.375rem;
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: var(--color-card) !important;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+/* ==========================================
+   Tables
+   ========================================== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-lg) 0;
+}
+
+th {
+  background-color: var(--color-card);
+  color: var(--color-primary);
+  font-weight: 600;
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+td {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-card);
+}
+
+tr:hover td {
+  background-color: var(--color-card);
+}
+
+/* ==========================================
+   Utility Classes
+   ========================================== */
+
+/* Colors */
+.text-primary { color: var(--color-primary); }
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+.text-danger { color: var(--color-danger); }
+.text-secondary { color: var(--color-secondary); }
+.text-muted { color: var(--color-muted); }
+
+/* Backgrounds */
+.bg-card { background-color: var(--color-card); }
+.bg-primary { background-color: var(--color-primary); }
+.bg-success { background-color: var(--color-success); }
+.bg-warning { background-color: var(--color-warning); }
+.bg-danger { background-color: var(--color-danger); }
+
+/* Chapter divider styling */
+.chapter-divider {
+  background: var(--gradient-primary);
+}
+
+.chapter-number {
+  font-size: 8rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.2);
+  line-height: 1;
+}
+
+.chapter-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* ==========================================
+   Animations
+   ========================================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Staggered animation for lists */
+.slidev-vclick-target {
+  transition: all 0.3s ease;
+}
+
+/* ==========================================
+   Grid Layouts
+   ========================================== */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-md);
+}
+
+/* ==========================================
+   Footer
+   ========================================== */
+
+.slidev-layout::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+}
+
+/* ==========================================
+   Presenter Notes Styling
+   ========================================== */
+
+.slidev-notes {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.slidev-notes h1,
+.slidev-notes h2,
+.slidev-notes h3 {
+  color: var(--color-primary);
+  margin-top: var(--space-md);
+}
+
+.slidev-notes ul {
+  margin: var(--space-sm) 0;
+}

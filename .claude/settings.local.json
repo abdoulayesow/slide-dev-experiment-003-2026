@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:sli.dev)",
+      "Bash(copy \"C:\\\\Users\\\\Aisha\\\\Documents\\\\workspace\\\\sources\\\\slide-dev-experiment-003-2026\\\\templates\\\\components\\\\*.vue\" \"C:\\\\Users\\\\Aisha\\\\Documents\\\\workspace\\\\sources\\\\slide-dev-experiment-003-2026\\\\presentations\\\\week1-scrum-foundations\\\\components\"\" && copy \"C:UsersAishaDocumentsworkspacesourcesslide-dev-experiment-003-2026templatestheme*.css\" \"C:UsersAishaDocumentsworkspacesourcesslide-dev-experiment-003-2026presentationsweek1-scrum-foundationsstyles\"\")",
+      "Bash(powershell -Command:*)",
+      "Bash(npm install:*)"
+    ]
+  }
+}

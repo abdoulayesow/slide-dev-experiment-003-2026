@@ -1,0 +1,2617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide Style Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       CSS VARIABLES - Light Pastel Design System
+       ============================================ */
+    :root {
+      /* Background Colors */
+      --bg: #f8f9fa;
+      --bg-cream: #fafaf8;
+      --bg-white: #ffffff;
+      --bg-gradient-blue: linear-gradient(135deg, #e8f4fc 0%, #d4e8f7 50%, #c5dcf0 100%);
+      --bg-gradient-soft: linear-gradient(180deg, #f8f9fa 0%, #f0f4f8 100%);
+
+      /* Pastel Accent Blobs */
+      --blob-yellow: #fff3b8;
+      --blob-pink: #ffd4d4;
+      --blob-blue: #d4e8ff;
+      --blob-coral: #ffb8b8;
+      --blob-mint: #c8f7dc;
+
+      /* Timeline Dot Colors */
+      --dot-coral: #ff9b9b;
+      --dot-yellow: #ffe066;
+      --dot-purple: #d4c4f9;
+      --dot-green: #9be8b0;
+      --dot-gray: #e0e0e0;
+
+      /* Text Colors */
+      --text: #1a1a1a;
+      --text-secondary: #666666;
+      --text-muted: #999999;
+      --text-light: #b0b0b0;
+
+      /* Accent Colors (for highlights) */
+      --accent-blue: #5b9bd5;
+      --accent-blue-light: rgba(91, 155, 213, 0.15);
+
+      /* Card & Border */
+      --card-bg: #ffffff;
+      --card-border: #e8e8e8;
+      --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+      /* Typography */
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+      /* Spacing Scale */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+
+      /* Border Radius */
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+
+      /* Slide Dimensions */
+      --slide-width: 1920px;
+      --slide-height: 1080px;
+      --slide-padding: 80px;
+    }
+
+    /* ============================================
+       BASE STYLES
+       ============================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Style Guide Container */
+    .guide-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: var(--space-8);
+    }
+
+    .guide-header {
+      text-align: center;
+      padding: var(--space-16) 0;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: var(--space-12);
+    }
+
+    .guide-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-4);
+      letter-spacing: -0.02em;
+    }
+
+    .guide-header p {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+    }
+
+    .section {
+      margin-bottom: var(--space-16);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-3);
+      border-bottom: 2px solid var(--text);
+      display: inline-block;
+    }
+
+    .section-description {
+      color: var(--text-secondary);
+      margin-bottom: var(--space-8);
+      max-width: 800px;
+    }
+
+    /* ============================================
+       COLOR PALETTE DISPLAY
+       ============================================ */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .color-swatch {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--card-shadow);
+    }
+
+    .color-swatch-preview {
+      height: 80px;
+    }
+
+    .color-swatch-info {
+      padding: var(--space-4);
+    }
+
+    .color-swatch-name {
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: var(--space-1);
+      color: var(--text);
+    }
+
+    .color-swatch-hex {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================
+       TYPOGRAPHY SAMPLES
+       ============================================ */
+    .type-samples {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .type-sample {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-8);
+      padding: var(--space-4);
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--card-border);
+    }
+
+    .type-label {
+      min-width: 140px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .type-title { font-size: 52px; font-weight: 700; letter-spacing: -0.02em; }
+    .type-subtitle { font-size: 20px; color: var(--text-secondary); }
+    .type-body { font-size: 16px; color: var(--text-secondary); }
+    .type-small { font-size: 14px; color: var(--text-muted); }
+    .type-mono { font-family: var(--font-mono); font-size: 14px; color: var(--accent-blue); }
+
+    /* ============================================
+       SLIDE PREVIEW CONTAINER
+       ============================================ */
+    .slide-preview-wrapper {
+      margin-bottom: var(--space-8);
+    }
+
+    .slide-preview-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-3);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .slide-preview {
+      background: var(--bg-cream);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      box-shadow: var(--card-shadow);
+    }
+
+    /* ============================================
+       SLIDE LAYOUTS
+       ============================================ */
+    .slide {
+      width: 100%;
+      height: 100%;
+      background: var(--bg-cream);
+      padding: var(--space-12);
+      padding-bottom: var(--space-16);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Slide Footer / Copyright */
+    .slide-footer {
+      position: absolute;
+      bottom: var(--space-4);
+      left: var(--space-12);
+      right: var(--space-12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .slide-footer .copyright {
+      opacity: 0.7;
+    }
+
+    .slide-footer .slide-number {
+      opacity: 0.7;
+    }
+
+    /* Decorative Blob Shapes */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .blob-1 {
+      width: 300px;
+      height: 300px;
+      background: var(--blob-yellow);
+      top: -50px;
+      right: 100px;
+    }
+
+    .blob-2 {
+      width: 350px;
+      height: 350px;
+      background: var(--blob-blue);
+      top: 50px;
+      right: -50px;
+    }
+
+    .blob-3 {
+      width: 280px;
+      height: 280px;
+      background: var(--blob-pink);
+      bottom: -80px;
+      right: 150px;
+    }
+
+    /* Cover Slide */
+    .slide-cover {
+      justify-content: center;
+      background: var(--bg-cream);
+    }
+
+    .slide-cover .cover-content {
+      max-width: 60%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .slide-cover h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-4);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-cover .cover-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-12);
+      line-height: 1.5;
+    }
+
+    .slide-cover .cover-meta {
+      display: flex;
+      gap: var(--space-4);
+      position: absolute;
+      bottom: var(--space-8);
+      left: var(--space-12);
+    }
+
+    .slide-cover .meta-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-3) var(--space-6);
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    /* Chapter Divider */
+    .slide-chapter {
+      justify-content: center;
+      padding-left: 10%;
+      background: var(--bg-cream);
+    }
+
+    .slide-chapter .chapter-number {
+      font-size: 6rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: var(--space-4);
+      opacity: 0.15;
+    }
+
+    .slide-chapter h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-3);
+      letter-spacing: -0.02em;
+    }
+
+    .slide-chapter .chapter-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+    }
+
+    /* Content Slide */
+    .slide-content {
+      background: var(--bg-cream);
+      justify-content: flex-start;
+      padding-top: var(--space-16);
+    }
+
+    .slide-content .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .slide-content h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-8);
+      letter-spacing: -0.01em;
+    }
+
+    .slide-content ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .slide-content li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+    }
+
+    .slide-content li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--text);
+      border-radius: 50%;
+      margin-top: 0.5em;
+      flex-shrink: 0;
+    }
+
+    /* Two Column Layout */
+    .slide-two-col .content-area {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+      flex: 1;
+      align-content: center;
+    }
+
+    .slide-two-col .column h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: var(--space-4);
+    }
+
+    .slide-two-col .column p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Summary Slide with Blue Gradient */
+    .slide-summary {
+      background: var(--bg-gradient-blue);
+      position: relative;
+      justify-content: flex-start;
+      padding-top: var(--space-8);
+    }
+
+    .slide-summary::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(91, 155, 213, 0.1) 100%);
+      pointer-events: none;
+    }
+
+    .slide-summary .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-4);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .slide-summary h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-8);
+    }
+
+    .slide-summary h2 .highlight {
+      background: var(--accent-blue-light);
+      padding: 0 var(--space-2);
+      border-radius: 4px;
+      color: var(--accent-blue);
+    }
+
+    .slide-summary .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: var(--space-4);
+    }
+
+    .slide-summary .summary-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 160px;
+    }
+
+    .slide-summary .summary-card .card-number {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+    }
+
+    .slide-summary .summary-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .slide-summary .summary-card .card-slide {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-top: auto;
+      padding-top: var(--space-4);
+    }
+
+    /* End Slide */
+    .slide-end {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: var(--bg-cream);
+    }
+
+    .slide-end h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-4);
+      letter-spacing: -0.02em;
+    }
+
+    .slide-end .end-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-8);
+    }
+
+    .slide-end .end-contact {
+      font-size: 1rem;
+      color: var(--accent-blue);
+    }
+
+    /* ============================================
+       TIMELINE COMPONENT (Agenda Style)
+       ============================================ */
+    .timeline-agenda {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      position: relative;
+      padding: var(--space-16) var(--space-8);
+    }
+
+    .timeline-agenda::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: var(--card-border);
+      transform: translateY(-50%);
+    }
+
+    .timeline-item-agenda {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      max-width: 180px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-item-agenda:nth-child(odd) {
+      padding-bottom: 100px;
+    }
+
+    .timeline-item-agenda:nth-child(even) {
+      padding-top: 100px;
+    }
+
+    .timeline-item-agenda:nth-child(odd) .timeline-content-agenda {
+      order: -1;
+      margin-bottom: var(--space-4);
+    }
+
+    .timeline-item-agenda:nth-child(even) .timeline-content-agenda {
+      margin-top: var(--space-4);
+    }
+
+    .timeline-dot-agenda {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+
+    .timeline-dot-agenda.coral { background: var(--dot-coral); }
+    .timeline-dot-agenda.yellow { background: var(--dot-yellow); }
+    .timeline-dot-agenda.purple { background: var(--dot-purple); }
+    .timeline-dot-agenda.green { background: var(--dot-green); }
+    .timeline-dot-agenda.gray { background: var(--dot-gray); }
+
+    .timeline-content-agenda {
+      text-align: center;
+    }
+
+    .timeline-content-agenda h4 {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: var(--space-2);
+      line-height: 1.3;
+    }
+
+    .timeline-content-agenda p {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ============================================
+       COMPONENTS
+       ============================================ */
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: var(--space-6);
+    }
+
+    .component-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      box-shadow: var(--card-shadow);
+    }
+
+    .component-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-4);
+    }
+
+    /* Card Component - Light Style */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      box-shadow: var(--card-shadow);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .card.card-accent-coral { border-left: 4px solid var(--dot-coral); }
+    .card.card-accent-yellow { border-left: 4px solid var(--dot-yellow); }
+    .card.card-accent-purple { border-left: 4px solid var(--dot-purple); }
+    .card.card-accent-green { border-left: 4px solid var(--dot-green); }
+    .card.card-accent-blue { border-left: 4px solid var(--accent-blue); }
+
+    .card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: var(--space-2);
+    }
+
+    .card p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Checklist Component */
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+    }
+
+    .checklist-item .check {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: var(--dot-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .checklist-item .check::after {
+      content: "";
+      width: 6px;
+      height: 10px;
+      border: 2px solid white;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg) translateY(-1px);
+    }
+
+    /* Comparison Component */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+
+    .comparison-col {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      border: 1px solid var(--card-border);
+    }
+
+    .comparison-col.do {
+      border-top: 3px solid var(--dot-green);
+    }
+
+    .comparison-col.dont {
+      border-top: 3px solid var(--dot-coral);
+    }
+
+    .comparison-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: var(--space-3);
+    }
+
+    .comparison-col.do .comparison-header { color: #2d8a4e; }
+    .comparison-col.dont .comparison-header { color: #c94a4a; }
+
+    .comparison-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .comparison-col.do .comparison-icon { background: var(--dot-green); color: white; }
+    .comparison-col.dont .comparison-icon { background: var(--dot-coral); color: white; }
+
+    .comparison-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .comparison-list li {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      padding-left: var(--space-4);
+      position: relative;
+    }
+
+    .comparison-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+    }
+
+    .comparison-col.do .comparison-list li::before { background: var(--dot-green); }
+    .comparison-col.dont .comparison-list li::before { background: var(--dot-coral); }
+
+    /* Simple Timeline */
+    .timeline {
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+    }
+
+    .timeline-item {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background: var(--card-border);
+    }
+
+    .timeline-item:last-child::after {
+      display: none;
+    }
+
+    .timeline-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--dot-coral);
+      margin: 0 auto var(--space-3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-dot.yellow { background: var(--dot-yellow); }
+    .timeline-dot.purple { background: var(--dot-purple); }
+    .timeline-dot.green { background: var(--dot-green); }
+
+    .timeline-time {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: var(--space-1);
+    }
+
+    .timeline-title {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+    }
+
+    /* Table Component */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+
+    .data-table th {
+      background: var(--bg);
+      padding: var(--space-3) var(--space-4);
+      text-align: left;
+      font-weight: 600;
+      color: var(--text);
+      border-bottom: 2px solid var(--card-border);
+    }
+
+    .data-table td {
+      padding: var(--space-3) var(--space-4);
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table tr:nth-child(even) td {
+      background: var(--bg);
+    }
+
+    /* Callout Box */
+    .callout {
+      background: var(--card-bg);
+      border-left: 4px solid var(--accent-blue);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: var(--space-4) var(--space-6);
+      box-shadow: var(--card-shadow);
+    }
+
+    .callout.callout-warning { border-left-color: var(--dot-yellow); }
+    .callout.callout-danger { border-left-color: var(--dot-coral); }
+    .callout.callout-success { border-left-color: var(--dot-green); }
+
+    .callout-title {
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--accent-blue);
+      margin-bottom: var(--space-2);
+    }
+
+    .callout.callout-warning .callout-title { color: #b8860b; }
+    .callout.callout-danger .callout-title { color: #c94a4a; }
+    .callout.callout-success .callout-title { color: #2d8a4e; }
+
+    .callout p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Card Grid */
+    .card-grid {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .card-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .card-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .card-grid.cols-6 { grid-template-columns: repeat(6, 1fr); }
+
+    /* Stat Card */
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      text-align: center;
+      box-shadow: var(--card-shadow);
+    }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+
+    .stat-value.coral { color: var(--dot-coral); }
+    .stat-value.green { color: #2d8a4e; }
+    .stat-value.purple { color: #8b5cf6; }
+    .stat-value.blue { color: var(--accent-blue); }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    /* Quote Component */
+    .quote-block {
+      position: relative;
+      padding: var(--space-6);
+      padding-left: var(--space-10);
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--card-shadow);
+    }
+
+    .quote-block::before {
+      content: '"';
+      position: absolute;
+      left: var(--space-4);
+      top: var(--space-2);
+      font-size: 4rem;
+      color: var(--dot-purple);
+      opacity: 0.5;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .quote-text {
+      font-size: 1.125rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: var(--space-4);
+    }
+
+    .quote-author {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .quote-author strong {
+      color: var(--text);
+    }
+
+    /* ============================================
+       ICON CARDS - Feature highlights with icons
+       ============================================ */
+    .icon-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      box-shadow: var(--card-shadow);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .icon-card:hover {
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .icon-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+      font-size: 1.25rem;
+    }
+
+    .icon-card-icon.coral { background: rgba(255, 155, 155, 0.25); color: #e07070; }
+    .icon-card-icon.yellow { background: rgba(255, 224, 102, 0.3); color: #c9a000; }
+    .icon-card-icon.purple { background: rgba(212, 196, 249, 0.35); color: #8b6fd4; }
+    .icon-card-icon.green { background: rgba(155, 232, 176, 0.3); color: #2d8a4e; }
+    .icon-card-icon.blue { background: rgba(91, 155, 213, 0.2); color: #4080b8; }
+
+    .icon-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: var(--space-2);
+    }
+
+    .icon-card p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       PROGRESS / STEPS - Workflow visualization
+       ============================================ */
+    .steps {
+      display: flex;
+      gap: 0;
+      position: relative;
+    }
+
+    .step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      padding: 0 var(--space-2);
+    }
+
+    .step::after {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: calc(50% + 20px);
+      width: calc(100% - 40px);
+      height: 2px;
+      background: var(--card-border);
+    }
+
+    .step:last-child::after {
+      display: none;
+    }
+
+    .step.completed::after {
+      background: var(--dot-green);
+    }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      position: relative;
+      z-index: 1;
+      transition: all 0.2s ease;
+    }
+
+    .step.active .step-number {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: white;
+    }
+
+    .step.completed .step-number {
+      background: var(--dot-green);
+      border-color: var(--dot-green);
+      color: white;
+    }
+
+    .step-content {
+      text-align: center;
+      margin-top: var(--space-3);
+    }
+
+    .step-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: var(--space-1);
+    }
+
+    .step.active .step-title {
+      color: var(--accent-blue);
+    }
+
+    .step-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Vertical Steps Variant */
+    .steps-vertical {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .steps-vertical .step {
+      flex-direction: row;
+      align-items: flex-start;
+      padding: var(--space-2) 0;
+    }
+
+    .steps-vertical .step::after {
+      top: calc(36px + var(--space-2));
+      left: 17px;
+      width: 2px;
+      height: calc(100% - 20px);
+    }
+
+    .steps-vertical .step-content {
+      text-align: left;
+      margin-top: 0;
+      margin-left: var(--space-4);
+    }
+
+    /* ============================================
+       BADGES / TAGS - Categorization labels
+       ============================================ */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-1) var(--space-3);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-coral {
+      background: rgba(255, 155, 155, 0.25);
+      color: #c94a4a;
+    }
+
+    .badge-yellow {
+      background: rgba(255, 224, 102, 0.35);
+      color: #9a7800;
+    }
+
+    .badge-purple {
+      background: rgba(212, 196, 249, 0.4);
+      color: #7c5dc9;
+    }
+
+    .badge-green {
+      background: rgba(155, 232, 176, 0.35);
+      color: #2d7a45;
+    }
+
+    .badge-blue {
+      background: rgba(91, 155, 213, 0.2);
+      color: #3a72a0;
+    }
+
+    .badge-gray {
+      background: var(--bg);
+      color: var(--text-muted);
+    }
+
+    /* Outline variant */
+    .badge-outline {
+      background: transparent;
+      border: 1.5px solid currentColor;
+    }
+
+    .badge-outline.badge-coral { border-color: var(--dot-coral); color: #c94a4a; }
+    .badge-outline.badge-green { border-color: var(--dot-green); color: #2d7a45; }
+    .badge-outline.badge-purple { border-color: var(--dot-purple); color: #7c5dc9; }
+    .badge-outline.badge-blue { border-color: var(--accent-blue); color: #3a72a0; }
+
+    /* Badge with dot indicator */
+    .badge-dot::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* ============================================
+       DEFINITION LIST - Glossary/term pairs
+       ============================================ */
+    .definition-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .definition-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: var(--space-4);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .definition-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .definition-term {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .definition-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Card-style definition list */
+    .definition-list-cards {
+      gap: var(--space-3);
+    }
+
+    .definition-list-cards .definition-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      border-bottom: none;
+    }
+
+    .definition-list-cards .definition-term {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .definition-list-cards .definition-term::before {
+      content: "";
+      width: 4px;
+      height: 16px;
+      background: var(--accent-blue);
+      border-radius: 2px;
+    }
+
+    /* ============================================
+       IMAGE PLACEHOLDER - Visual containers
+       ============================================ */
+    .image-placeholder {
+      background: var(--bg);
+      border: 2px dashed var(--card-border);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-8);
+      min-height: 180px;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .image-placeholder:hover {
+      border-color: var(--accent-blue);
+      background: rgba(91, 155, 213, 0.05);
+    }
+
+    .image-placeholder-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-3);
+      color: var(--text-muted);
+    }
+
+    .image-placeholder-text {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .image-placeholder-hint {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-top: var(--space-1);
+    }
+
+    /* Filled image container (when image is present) */
+    .image-container {
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .image-container-caption {
+      padding: var(--space-3) var(--space-4);
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      background: var(--card-bg);
+      border-top: 1px solid var(--card-border);
+    }
+
+    /* Image with overlay label */
+    .image-container-label {
+      position: absolute;
+      top: var(--space-3);
+      left: var(--space-3);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(4px);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ============================================
+       SLIDESHOW MODE - Full Screen Presentation
+       ============================================ */
+
+    /* Slideshow container */
+    .slideshow-mode {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--bg-cream);
+      z-index: 9999;
+      display: none;
+    }
+
+    .slideshow-mode.active {
+      display: block;
+    }
+
+    .slideshow-mode .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: translateX(30px);
+    }
+
+    .slideshow-mode .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+
+    .slideshow-mode .slide.prev {
+      transform: translateX(-30px);
+    }
+
+    /* Slideshow controls */
+    .slideshow-controls {
+      position: fixed;
+      bottom: var(--space-6);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: var(--space-4);
+      align-items: center;
+      background: var(--card-bg);
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      z-index: 10000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .slideshow-mode:hover .slideshow-controls,
+    .slideshow-controls:focus-within {
+      opacity: 1;
+    }
+
+    .slideshow-controls button {
+      background: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .slideshow-controls button:hover {
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .slideshow-controls .slide-counter {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      min-width: 60px;
+      text-align: center;
+    }
+
+    /* Progress bar */
+    .slideshow-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--accent-blue);
+      z-index: 10001;
+      transition: width 0.3s ease;
+    }
+
+    /* Start slideshow button */
+    .start-slideshow-btn {
+      position: fixed;
+      bottom: var(--space-6);
+      right: var(--space-6);
+      background: var(--text);
+      color: var(--bg-cream);
+      border: none;
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-xl);
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 100;
+    }
+
+    .start-slideshow-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    body:has(.slideshow-mode.active) .start-slideshow-btn {
+      display: none;
+    }
+
+    body:has(.slideshow-mode.active) .guide-container {
+      display: none;
+    }
+
+    /* ============================================
+       PRINT STYLES
+       ============================================ */
+    @media print {
+      body {
+        background: white;
+      }
+
+      .slide {
+        page-break-after: always;
+        page-break-inside: avoid;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .guide-container,
+      .guide-header,
+      .section-title {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="guide-container">
+    <!-- Header -->
+    <header class="guide-header">
+      <h1>Slide Style Guide</h1>
+      <p>Light, airy design system with pastel accents and organic shapes</p>
+    </header>
+
+    <!-- Color Palette -->
+    <section class="section">
+      <h2 class="section-title">Color Palette</h2>
+      <p class="section-description">
+        Soft, pastel tones with cream backgrounds and colorful accent blobs for a modern, friendly aesthetic.
+      </p>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="color-swatch-preview" style="background: #f8f9fa;"></div>
+          <div class="color-swatch-info">
+            <div class="color-swatch-name">Background</div>
+            <div class="color-swatch-hex">--bg: #f8f9fa</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-preview" style="background: #fafaf8;"></div>
+          <div class="color-swatch-info">
+            <div class="color-swatch-name">Cream</div>
+            <div class="color-swatch-hex">--bg-cream: #fafaf8</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-preview" style="background: linear-gradient(135deg, #e8f4fc 0%, #d4e8f7 50%, #c5dcf0 100%);"></div>
+          <div class="color-swatch-info">
+            <div class="color-swatch-name">Blue Gradient</div>
+            <div class="color-swatch-hex">--bg-gradient-blue</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-preview" style="background: #fff3b8;"></div>
+          <div class="color-swatch-info">
+            <div class="color-swatch-name">Blob Yellow</div>
+            <div class="color-swatch-hex">--blob-yellow: #fff3b8</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-preview" style="background: #d4e8ff;"></div>
+          <div class="color-swatch-info">
+            <div class="color-swatch-name">Blob Blue</div>
+            <div class="color-swatch-hex">--blob-blue: #d4e8ff</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-preview" style="background: #ffd4d4;"></div>
+          <div class="color-swatch-info">
+            <div class="color-swatch-name">Blob Pink</div>
+            <div class="color-swatch-hex">--blob-pink: #ffd4d4</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-preview" style="background: #ff9b9b;"></div>
+          <div class="color-swatch-info">
+            <div class="color-swatch-name">Dot Coral</div>
+            <div class="color-swatch-hex">--dot-coral: #ff9b9b</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-preview" style="background: #ffe066;"></div>
+          <div class="color-swatch-info">
+            <div class="color-swatch-name">Dot Yellow</div>
+            <div class="color-swatch-hex">--dot-yellow: #ffe066</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-preview" style="background: #d4c4f9;"></div>
+          <div class="color-swatch-info">
+            <div class="color-swatch-name">Dot Purple</div>
+            <div class="color-swatch-hex">--dot-purple: #d4c4f9</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-preview" style="background: #9be8b0;"></div>
+          <div class="color-swatch-info">
+            <div class="color-swatch-name">Dot Green</div>
+            <div class="color-swatch-hex">--dot-green: #9be8b0</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-preview" style="background: #5b9bd5;"></div>
+          <div class="color-swatch-info">
+            <div class="color-swatch-name">Accent Blue</div>
+            <div class="color-swatch-hex">--accent-blue: #5b9bd5</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch-preview" style="background: #1a1a1a;"></div>
+          <div class="color-swatch-info">
+            <div class="color-swatch-name">Text</div>
+            <div class="color-swatch-hex">--text: #1a1a1a</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section class="section">
+      <h2 class="section-title">Typography</h2>
+      <p class="section-description">
+        Plus Jakarta Sans - a clean, modern sans-serif with excellent weight range for hierarchy.
+      </p>
+      <div class="type-samples">
+        <div class="type-sample">
+          <span class="type-label">Title (52px)</span>
+          <span class="type-title">Slide Title Here</span>
+        </div>
+        <div class="type-sample">
+          <span class="type-label">Subtitle (20px)</span>
+          <span class="type-subtitle">Supporting subtitle text for context</span>
+        </div>
+        <div class="type-sample">
+          <span class="type-label">Body (16px)</span>
+          <span class="type-body">Regular body text for slide content and explanations.</span>
+        </div>
+        <div class="type-sample">
+          <span class="type-label">Small (14px)</span>
+          <span class="type-small">Captions, footnotes, and meta information</span>
+        </div>
+        <div class="type-sample">
+          <span class="type-label">Monospace (14px)</span>
+          <span class="type-mono">const codeExample = true;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide Layouts -->
+    <section class="section">
+      <h2 class="section-title">Slide Layouts</h2>
+      <p class="section-description">
+        Light, airy slide types with organic pastel blob decorations and clean typography.
+      </p>
+
+      <!-- Cover Slide -->
+      <div class="slide-preview-wrapper">
+        <div class="slide-preview-label">Cover Slide</div>
+        <div class="slide-preview">
+          <div class="slide slide-cover">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+            <div class="cover-content">
+              <h1>L'agilité à l'heure de l'IA</h1>
+              <p class="cover-subtitle">Comment l'intelligence artificielle révolutionne la gestion de projet agile</p>
+            </div>
+            <div class="cover-meta">
+              <span class="meta-box">Abdoulaye Sow</span>
+              <span class="meta-box">21/02/2026</span>
+            </div>
+            <div class="slide-footer">
+              <span class="copyright">© 2026 Improve So LLC</span>
+              <span class="slide-number">1 / 24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline/Agenda Slide -->
+      <div class="slide-preview-wrapper">
+        <div class="slide-preview-label">Timeline / Agenda Slide</div>
+        <div class="slide-preview">
+          <div class="slide slide-content">
+            <h2>Le fil à suivre ...</h2>
+            <div class="slide-body">
+              <div class="timeline-agenda">
+                <div class="timeline-item-agenda">
+                  <div class="timeline-content-agenda">
+                    <h4>L'IA en Afrique: notre réalité</h4>
+                    <p>Regard tourné sur les réalités de transformation digitales</p>
+                  </div>
+                  <div class="timeline-dot-agenda coral">01</div>
+                </div>
+                <div class="timeline-item-agenda">
+                  <div class="timeline-dot-agenda yellow">02</div>
+                  <div class="timeline-content-agenda">
+                    <h4>L'exploration de produit par l'IA</h4>
+                    <p>Exemple pratique d'utilisation de l'IA</p>
+                  </div>
+                </div>
+                <div class="timeline-item-agenda">
+                  <div class="timeline-content-agenda">
+                    <h4>Gestion de backlog et sprint</h4>
+                    <p>Comment gérer nos différents types de backlogs</p>
+                  </div>
+                  <div class="timeline-dot-agenda purple">03</div>
+                </div>
+                <div class="timeline-item-agenda">
+                  <div class="timeline-dot-agenda green">04</div>
+                  <div class="timeline-content-agenda">
+                    <h4>Accélérer sa release grace à l'IA</h4>
+                    <p>Exemple pratique d'utilisation</p>
+                  </div>
+                </div>
+                <div class="timeline-item-agenda">
+                  <div class="timeline-content-agenda">
+                    <h4>Quelques Quizzes et Ressources</h4>
+                    <p>Tester nos connaissances</p>
+                  </div>
+                  <div class="timeline-dot-agenda gray">05</div>
+                </div>
+              </div>
+            </div>
+            <div class="slide-footer">
+              <span class="copyright">© 2026 Improve So LLC</span>
+              <span class="slide-number">2 / 24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary/Contents Slide with Blue Gradient -->
+      <div class="slide-preview-wrapper">
+        <div class="slide-preview-label">Summary / Contents Slide</div>
+        <div class="slide-preview">
+          <div class="slide slide-summary">
+            <h2>Summary of deck contents</h2>
+            <div class="summary-grid">
+              <div class="summary-card">
+                <span class="card-number">01</span>
+                <h4>Add section title</h4>
+                <span class="card-slide">Slide 00</span>
+              </div>
+              <div class="summary-card">
+                <span class="card-number">02</span>
+                <h4>Add section title</h4>
+                <span class="card-slide">Slide 00</span>
+              </div>
+              <div class="summary-card">
+                <span class="card-number">03</span>
+                <h4>Add section title</h4>
+                <span class="card-slide">Slide 00</span>
+              </div>
+              <div class="summary-card">
+                <span class="card-number">04</span>
+                <h4>Add section title</h4>
+                <span class="card-slide">Slide 00</span>
+              </div>
+              <div class="summary-card">
+                <span class="card-number">05</span>
+                <h4>Add section title</h4>
+                <span class="card-slide">Slide 00</span>
+              </div>
+              <div class="summary-card">
+                <span class="card-number">06</span>
+                <h4>Add section title</h4>
+                <span class="card-slide">Slide 00</span>
+              </div>
+            </div>
+            <div class="slide-footer">
+              <span class="copyright">© 2026 Improve So LLC</span>
+              <span class="slide-number">3 / 24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter Divider -->
+      <div class="slide-preview-wrapper">
+        <div class="slide-preview-label">Chapter Divider</div>
+        <div class="slide-preview">
+          <div class="slide slide-chapter">
+            <div class="blob blob-2" style="right: 50px; top: 100px;"></div>
+            <span class="chapter-number">01</span>
+            <h2>The Scrum Framework</h2>
+            <p class="chapter-subtitle">Core principles, values, and the empirical process that drives continuous improvement</p>
+            <div class="slide-footer">
+              <span class="copyright">© 2026 Improve So LLC</span>
+              <span class="slide-number">4 / 24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Slide -->
+      <div class="slide-preview-wrapper">
+        <div class="slide-preview-label">Content Slide</div>
+        <div class="slide-preview">
+          <div class="slide slide-content">
+            <h2>The Three Pillars of Empiricism</h2>
+            <div class="slide-body">
+              <ul>
+                <li>Transparency: All aspects of the process must be visible to those responsible for the outcome</li>
+                <li>Inspection: Scrum artifacts and progress toward goals must be inspected frequently</li>
+                <li>Adaptation: If any aspect of the process deviates outside acceptable limits, adjustments must be made</li>
+              </ul>
+            </div>
+            <div class="slide-footer">
+              <span class="copyright">© 2026 Improve So LLC</span>
+              <span class="slide-number">5 / 24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two Column Slide -->
+      <div class="slide-preview-wrapper">
+        <div class="slide-preview-label">Two Column Layout</div>
+        <div class="slide-preview">
+          <div class="slide slide-content slide-two-col">
+            <h2>Product Owner vs Scrum Master</h2>
+            <div class="content-area">
+              <div class="column">
+                <h3>Product Owner</h3>
+                <p>Responsible for maximizing the value of the product and the work of the Development Team. The sole person responsible for managing the Product Backlog.</p>
+              </div>
+              <div class="column">
+                <h3>Scrum Master</h3>
+                <p>Responsible for promoting and supporting Scrum. Helps everyone understand Scrum theory, practices, rules, and values. A servant-leader for the Scrum Team.</p>
+              </div>
+            </div>
+            <div class="slide-footer">
+              <span class="copyright">© 2026 Improve So LLC</span>
+              <span class="slide-number">6 / 24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- End Slide -->
+      <div class="slide-preview-wrapper">
+        <div class="slide-preview-label">End Slide</div>
+        <div class="slide-preview">
+          <div class="slide slide-end">
+            <div class="blob blob-1" style="top: 50%; right: 20%; transform: translateY(-50%);"></div>
+            <div class="blob blob-3" style="bottom: 20%; left: 15%;"></div>
+            <h2>Thank You</h2>
+            <p class="end-subtitle">Questions and Discussion</p>
+            <p class="end-contact">trainer@example.com</p>
+            <div class="slide-footer">
+              <span class="copyright">© 2026 Improve So LLC</span>
+              <span class="slide-number">24 / 24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Components -->
+    <section class="section">
+      <h2 class="section-title">Components</h2>
+      <p class="section-description">
+        Clean, minimal UI patterns with subtle shadows and pastel accents.
+      </p>
+
+      <div class="component-grid">
+        <!-- Cards -->
+        <div class="component-item">
+          <div class="component-label">Card (with accent variants)</div>
+          <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <div class="card card-accent-blue">
+              <h4>Default Card</h4>
+              <p>Card with blue accent border.</p>
+            </div>
+            <div class="card card-accent-green">
+              <h4>Success Card</h4>
+              <p>Use for positive outcomes.</p>
+            </div>
+            <div class="card card-accent-coral">
+              <h4>Warning Card</h4>
+              <p>Use for caution items.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checklist -->
+        <div class="component-item">
+          <div class="component-label">Checklist</div>
+          <div class="checklist">
+            <div class="checklist-item">
+              <span class="check"></span>
+              <span>Understand Scrum values</span>
+            </div>
+            <div class="checklist-item">
+              <span class="check"></span>
+              <span>Define Sprint Goals effectively</span>
+            </div>
+            <div class="checklist-item">
+              <span class="check"></span>
+              <span>Facilitate Daily Scrum meetings</span>
+            </div>
+            <div class="checklist-item">
+              <span class="check"></span>
+              <span>Coach the team on self-organization</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparison -->
+        <div class="component-item">
+          <div class="component-label">Comparison (Do's / Don'ts)</div>
+          <div class="comparison">
+            <div class="comparison-col do">
+              <div class="comparison-header">
+                <span class="comparison-icon">&#10003;</span>
+                Do
+              </div>
+              <ul class="comparison-list">
+                <li>Facilitate discussions</li>
+                <li>Remove impediments</li>
+                <li>Coach the team</li>
+              </ul>
+            </div>
+            <div class="comparison-col dont">
+              <div class="comparison-header">
+                <span class="comparison-icon">&#10005;</span>
+                Don't
+              </div>
+              <ul class="comparison-list">
+                <li>Assign tasks to team</li>
+                <li>Make decisions for team</li>
+                <li>Control the process</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="component-item">
+          <div class="component-label">Simple Timeline</div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-time">9:00 AM</div>
+              <div class="timeline-title">Sprint Planning</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot yellow"></div>
+              <div class="timeline-time">9:15 AM</div>
+              <div class="timeline-title">Daily Scrum</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot purple"></div>
+              <div class="timeline-time">4:00 PM</div>
+              <div class="timeline-title">Sprint Review</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot green"></div>
+              <div class="timeline-time">5:00 PM</div>
+              <div class="timeline-title">Retrospective</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="component-item" style="grid-column: span 2;">
+          <div class="component-label">Data Table</div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Time-box</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sprint Planning</td>
+                <td>8 hours (2-week Sprint)</td>
+                <td>Define Sprint Goal and select backlog items</td>
+              </tr>
+              <tr>
+                <td>Daily Scrum</td>
+                <td>15 minutes</td>
+                <td>Synchronize activities and plan for next 24 hours</td>
+              </tr>
+              <tr>
+                <td>Sprint Review</td>
+                <td>4 hours (2-week Sprint)</td>
+                <td>Inspect increment and adapt backlog</td>
+              </tr>
+              <tr>
+                <td>Sprint Retrospective</td>
+                <td>3 hours (2-week Sprint)</td>
+                <td>Inspect process and plan improvements</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Callout Box -->
+        <div class="component-item">
+          <div class="component-label">Callout Box</div>
+          <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <div class="callout">
+              <div class="callout-title">Note</div>
+              <p>The Scrum Guide is the definitive guide to Scrum. Always refer to the latest version.</p>
+            </div>
+            <div class="callout callout-warning">
+              <div class="callout-title">Warning</div>
+              <p>Skipping retrospectives leads to technical debt accumulation.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stat Cards -->
+        <div class="component-item">
+          <div class="component-label">Stat Cards</div>
+          <div class="card-grid cols-3">
+            <div class="stat-card">
+              <div class="stat-value blue">94%</div>
+              <div class="stat-label">Teams report improved delivery</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value green">3x</div>
+              <div class="stat-label">Faster time to market</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value purple">12M+</div>
+              <div class="stat-label">Certified professionals</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quote -->
+        <div class="component-item" style="grid-column: span 2;">
+          <div class="component-label">Quote Block</div>
+          <div class="quote-block">
+            <p class="quote-text">Scrum is a framework within which people can address complex adaptive problems, while productively and creatively delivering products of the highest possible value.</p>
+            <p class="quote-author">- <strong>Ken Schwaber & Jeff Sutherland</strong>, The Scrum Guide</p>
+          </div>
+        </div>
+
+        <!-- Icon Cards -->
+        <div class="component-item" style="grid-column: span 2;">
+          <div class="component-label">Icon Cards</div>
+          <div class="card-grid cols-4">
+            <div class="icon-card">
+              <div class="icon-card-icon coral">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+              </div>
+              <h4>Time-boxed</h4>
+              <p>Events have maximum durations to maintain focus</p>
+            </div>
+            <div class="icon-card">
+              <div class="icon-card-icon yellow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <h4>Self-organizing</h4>
+              <p>Teams choose how to accomplish work</p>
+            </div>
+            <div class="icon-card">
+              <div class="icon-card-icon purple">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 20V10"/>
+                  <path d="M18 20V4"/>
+                  <path d="M6 20v-4"/>
+                </svg>
+              </div>
+              <h4>Iterative</h4>
+              <p>Regular cycles enable continuous improvement</p>
+            </div>
+            <div class="icon-card">
+              <div class="icon-card-icon green">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+              <h4>Incremental</h4>
+              <p>Deliver value in small, usable increments</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress / Steps -->
+        <div class="component-item" style="grid-column: span 2;">
+          <div class="component-label">Progress Steps</div>
+          <div class="steps">
+            <div class="step completed">
+              <div class="step-number">✓</div>
+              <div class="step-content">
+                <div class="step-title">Planning</div>
+                <div class="step-desc">Define Sprint Goal</div>
+              </div>
+            </div>
+            <div class="step completed">
+              <div class="step-number">✓</div>
+              <div class="step-content">
+                <div class="step-title">Development</div>
+                <div class="step-desc">Build increment</div>
+              </div>
+            </div>
+            <div class="step active">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <div class="step-title">Review</div>
+                <div class="step-desc">Inspect increment</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <div class="step-title">Retrospective</div>
+                <div class="step-desc">Improve process</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Badges -->
+        <div class="component-item">
+          <div class="component-label">Badges / Tags</div>
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4);">
+            <span class="badge badge-coral">Required</span>
+            <span class="badge badge-yellow">In Progress</span>
+            <span class="badge badge-purple">Optional</span>
+            <span class="badge badge-green">Complete</span>
+            <span class="badge badge-blue">New</span>
+            <span class="badge badge-gray">Archived</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4);">
+            <span class="badge badge-outline badge-coral">Critical</span>
+            <span class="badge badge-outline badge-green">Verified</span>
+            <span class="badge badge-outline badge-purple">Beta</span>
+            <span class="badge badge-outline badge-blue">Updated</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
+            <span class="badge badge-green badge-dot">Active</span>
+            <span class="badge badge-yellow badge-dot">Pending</span>
+            <span class="badge badge-coral badge-dot">Blocked</span>
+          </div>
+        </div>
+
+        <!-- Definition List -->
+        <div class="component-item">
+          <div class="component-label">Definition List</div>
+          <div class="definition-list">
+            <div class="definition-item">
+              <div class="definition-term">Sprint</div>
+              <div class="definition-desc">A time-box of one month or less during which a usable increment is created.</div>
+            </div>
+            <div class="definition-item">
+              <div class="definition-term">Increment</div>
+              <div class="definition-desc">The sum of all Product Backlog items completed during a Sprint.</div>
+            </div>
+            <div class="definition-item">
+              <div class="definition-term">Velocity</div>
+              <div class="definition-desc">A measure of the amount of work a team can complete in a Sprint.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Definition List Cards -->
+        <div class="component-item">
+          <div class="component-label">Definition Cards</div>
+          <div class="definition-list definition-list-cards">
+            <div class="definition-item">
+              <div class="definition-term">Product Owner</div>
+              <div class="definition-desc">Responsible for maximizing the value of the product.</div>
+            </div>
+            <div class="definition-item">
+              <div class="definition-term">Scrum Master</div>
+              <div class="definition-desc">Accountable for the Scrum Team's effectiveness.</div>
+            </div>
+            <div class="definition-item">
+              <div class="definition-term">Developers</div>
+              <div class="definition-desc">Committed to creating any aspect of a usable Increment.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Placeholder -->
+        <div class="component-item">
+          <div class="component-label">Image Placeholder</div>
+          <div class="image-placeholder">
+            <div class="image-placeholder-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+            </div>
+            <div class="image-placeholder-text">Drop image here</div>
+            <div class="image-placeholder-hint">or click to browse</div>
+          </div>
+        </div>
+
+        <!-- Image Container with Caption -->
+        <div class="component-item">
+          <div class="component-label">Image Container</div>
+          <div class="image-container">
+            <div style="background: linear-gradient(135deg, var(--blob-blue) 0%, var(--blob-pink) 100%); height: 140px; display: flex; align-items: center; justify-content: center;">
+              <span style="color: var(--text-muted); font-size: 0.875rem;">Image Preview Area</span>
+            </div>
+            <span class="image-container-label">Figure 1</span>
+            <div class="image-container-caption">The Scrum Framework overview showing events, roles, and artifacts.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Usage Notes -->
+    <section class="section">
+      <h2 class="section-title">Usage Notes</h2>
+      <div style="max-width: 800px;">
+        <div class="callout" style="margin-bottom: var(--space-4);">
+          <div class="callout-title">Slideshow Mode</div>
+          <p>Click the <strong>Present</strong> button (bottom right) to start fullscreen presentation. Use arrow keys to navigate, <code>Esc</code> to exit, <code>F</code> for fullscreen.</p>
+        </div>
+        <div class="callout" style="margin-bottom: var(--space-4);">
+          <div class="callout-title">Slide Dimensions</div>
+          <p>Design for 16:9 aspect ratio (1920x1080). Use CSS <code>aspect-ratio: 16/9</code> for containers.</p>
+        </div>
+        <div class="callout" style="margin-bottom: var(--space-4);">
+          <div class="callout-title">Slide Footer</div>
+          <p>All slides include a footer with copyright (<code>© 2026 Improve So LLC</code>) and slide number. Use the <code>.slide-footer</code> class.</p>
+        </div>
+        <div class="callout" style="margin-bottom: var(--space-4);">
+          <div class="callout-title">Blob Decorations</div>
+          <p>Use the <code>.blob</code> elements with <code>filter: blur(40px)</code> for soft organic shapes. Position with absolute positioning.</p>
+        </div>
+        <div class="callout">
+          <div class="callout-title">PDF Export</div>
+          <p>Use browser print (Ctrl+P) with background graphics enabled. Each slide has <code>page-break-after: always</code>.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Start Slideshow Button -->
+  <button class="start-slideshow-btn" onclick="startSlideshow()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+    Present
+  </button>
+
+  <!-- Slideshow Mode Container -->
+  <div class="slideshow-mode" id="slideshowMode">
+    <div class="slideshow-progress" id="slideshowProgress"></div>
+
+    <!-- Slide 1: Cover -->
+    <div class="slide slide-cover active">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+      <div class="cover-content">
+        <h1>L'agilité à l'heure de l'IA</h1>
+        <p class="cover-subtitle">Comment l'intelligence artificielle révolutionne la gestion de projet agile</p>
+      </div>
+      <div class="cover-meta">
+        <span class="meta-box">Abdoulaye Sow</span>
+        <span class="meta-box">21/02/2026</span>
+      </div>
+      <div class="slide-footer">
+        <span class="copyright">© 2026 Improve So LLC</span>
+        <span class="slide-number">1 / 7</span>
+      </div>
+    </div>
+
+    <!-- Slide 2: Agenda -->
+    <div class="slide slide-content">
+      <h2>Le fil à suivre ...</h2>
+      <div class="slide-body">
+        <div class="timeline-agenda">
+          <div class="timeline-item-agenda">
+            <div class="timeline-content-agenda">
+              <h4>L'IA en Afrique: notre réalité</h4>
+              <p>Regard tourné sur les réalités de transformation digitales</p>
+            </div>
+            <div class="timeline-dot-agenda coral">01</div>
+          </div>
+          <div class="timeline-item-agenda">
+            <div class="timeline-dot-agenda yellow">02</div>
+            <div class="timeline-content-agenda">
+              <h4>L'exploration de produit par l'IA</h4>
+              <p>Exemple pratique d'utilisation de l'IA</p>
+            </div>
+          </div>
+          <div class="timeline-item-agenda">
+            <div class="timeline-content-agenda">
+              <h4>Gestion de backlog et sprint</h4>
+              <p>Comment gérer nos différents types de backlogs</p>
+            </div>
+            <div class="timeline-dot-agenda purple">03</div>
+          </div>
+          <div class="timeline-item-agenda">
+            <div class="timeline-dot-agenda green">04</div>
+            <div class="timeline-content-agenda">
+              <h4>Accélérer sa release grace à l'IA</h4>
+              <p>Exemple pratique d'utilisation</p>
+            </div>
+          </div>
+          <div class="timeline-item-agenda">
+            <div class="timeline-content-agenda">
+              <h4>Quelques Quizzes et Ressources</h4>
+              <p>Tester nos connaissances</p>
+            </div>
+            <div class="timeline-dot-agenda gray">05</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="copyright">© 2026 Improve So LLC</span>
+        <span class="slide-number">2 / 7</span>
+      </div>
+    </div>
+
+    <!-- Slide 3: Summary -->
+    <div class="slide slide-summary">
+      <div class="slide-header">
+        <span>Improve So LLC</span>
+        <span>2026</span>
+      </div>
+      <h2>Summary of deck contents</h2>
+      <div class="summary-grid">
+        <div class="summary-card">
+          <span class="card-number">01</span>
+          <h4>Introduction to AI in Agile</h4>
+          <span class="card-slide">Slide 04</span>
+        </div>
+        <div class="summary-card">
+          <span class="card-number">02</span>
+          <h4>Product Exploration</h4>
+          <span class="card-slide">Slide 08</span>
+        </div>
+        <div class="summary-card">
+          <span class="card-number">03</span>
+          <h4>Backlog Management</h4>
+          <span class="card-slide">Slide 12</span>
+        </div>
+        <div class="summary-card">
+          <span class="card-number">04</span>
+          <h4>Sprint Planning</h4>
+          <span class="card-slide">Slide 16</span>
+        </div>
+        <div class="summary-card">
+          <span class="card-number">05</span>
+          <h4>Release Acceleration</h4>
+          <span class="card-slide">Slide 20</span>
+        </div>
+        <div class="summary-card">
+          <span class="card-number">06</span>
+          <h4>Q&A and Resources</h4>
+          <span class="card-slide">Slide 24</span>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="copyright">© 2026 Improve So LLC</span>
+        <span class="slide-number">3 / 7</span>
+      </div>
+    </div>
+
+    <!-- Slide 4: Chapter Divider -->
+    <div class="slide slide-chapter">
+      <div class="blob blob-2" style="right: 50px; top: 100px;"></div>
+      <span class="chapter-number">01</span>
+      <h2>The Scrum Framework</h2>
+      <p class="chapter-subtitle">Core principles, values, and the empirical process that drives continuous improvement</p>
+      <div class="slide-footer">
+        <span class="copyright">© 2026 Improve So LLC</span>
+        <span class="slide-number">4 / 7</span>
+      </div>
+    </div>
+
+    <!-- Slide 5: Content -->
+    <div class="slide slide-content">
+      <h2>The Three Pillars of Empiricism</h2>
+      <div class="slide-body">
+        <ul>
+          <li>Transparency: All aspects of the process must be visible to those responsible for the outcome</li>
+          <li>Inspection: Scrum artifacts and progress toward goals must be inspected frequently</li>
+          <li>Adaptation: If any aspect of the process deviates outside acceptable limits, adjustments must be made</li>
+        </ul>
+      </div>
+      <div class="slide-footer">
+        <span class="copyright">© 2026 Improve So LLC</span>
+        <span class="slide-number">5 / 7</span>
+      </div>
+    </div>
+
+    <!-- Slide 6: Two Column -->
+    <div class="slide slide-content slide-two-col">
+      <h2>Product Owner vs Scrum Master</h2>
+      <div class="content-area">
+        <div class="column">
+          <h3>Product Owner</h3>
+          <p>Responsible for maximizing the value of the product and the work of the Development Team. The sole person responsible for managing the Product Backlog.</p>
+        </div>
+        <div class="column">
+          <h3>Scrum Master</h3>
+          <p>Responsible for promoting and supporting Scrum. Helps everyone understand Scrum theory, practices, rules, and values. A servant-leader for the Scrum Team.</p>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="copyright">© 2026 Improve So LLC</span>
+        <span class="slide-number">6 / 7</span>
+      </div>
+    </div>
+
+    <!-- Slide 7: End -->
+    <div class="slide slide-end">
+      <div class="blob blob-1" style="top: 50%; right: 20%; transform: translateY(-50%);"></div>
+      <div class="blob blob-3" style="bottom: 20%; left: 15%;"></div>
+      <h2>Thank You</h2>
+      <p class="end-subtitle">Questions and Discussion</p>
+      <p class="end-contact">trainer@example.com</p>
+      <div class="slide-footer">
+        <span class="copyright">© 2026 Improve So LLC</span>
+        <span class="slide-number">7 / 7</span>
+      </div>
+    </div>
+
+    <!-- Slideshow Controls -->
+    <div class="slideshow-controls">
+      <button onclick="prevSlide()" title="Previous (←)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+      </button>
+      <span class="slide-counter" id="slideCounter">1 / 7</span>
+      <button onclick="nextSlide()" title="Next (→)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+        </svg>
+      </button>
+      <button onclick="exitSlideshow()" title="Exit (Esc)" style="margin-left: var(--space-4);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Slideshow functionality
+    let currentSlide = 0;
+    let totalSlides = 0;
+    let slideshowMode = null;
+    let slides = [];
+
+    function initSlideshow() {
+      slideshowMode = document.getElementById('slideshowMode');
+      slides = slideshowMode.querySelectorAll('.slide');
+      totalSlides = slides.length;
+      updateSlideCounter();
+      updateProgress();
+    }
+
+    function startSlideshow() {
+      initSlideshow();
+      slideshowMode.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Request fullscreen
+      if (slideshowMode.requestFullscreen) {
+        slideshowMode.requestFullscreen();
+      } else if (slideshowMode.webkitRequestFullscreen) {
+        slideshowMode.webkitRequestFullscreen();
+      } else if (slideshowMode.msRequestFullscreen) {
+        slideshowMode.msRequestFullscreen();
+      }
+
+      goToSlide(0);
+    }
+
+    function exitSlideshow() {
+      slideshowMode.classList.remove('active');
+      document.body.style.overflow = '';
+
+      // Exit fullscreen
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+
+    function goToSlide(index) {
+      if (index < 0 || index >= totalSlides) return;
+
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active', 'prev');
+        if (i < index) {
+          slide.classList.add('prev');
+        }
+      });
+
+      slides[index].classList.add('active');
+      currentSlide = index;
+      updateSlideCounter();
+      updateProgress();
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        goToSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        goToSlide(currentSlide - 1);
+      }
+    }
+
+    function updateSlideCounter() {
+      const counter = document.getElementById('slideCounter');
+      if (counter) {
+        counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+      }
+    }
+
+    function updateProgress() {
+      const progress = document.getElementById('slideshowProgress');
+      if (progress) {
+        const percentage = ((currentSlide + 1) / totalSlides) * 100;
+        progress.style.width = `${percentage}%`;
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!slideshowMode || !slideshowMode.classList.contains('active')) return;
+
+      switch (e.key) {
+        case 'ArrowRight':
+        case ' ':
+        case 'PageDown':
+          e.preventDefault();
+          nextSlide();
+          break;
+        case 'ArrowLeft':
+        case 'PageUp':
+          e.preventDefault();
+          prevSlide();
+          break;
+        case 'Escape':
+          e.preventDefault();
+          exitSlideshow();
+          break;
+        case 'Home':
+          e.preventDefault();
+          goToSlide(0);
+          break;
+        case 'End':
+          e.preventDefault();
+          goToSlide(totalSlides - 1);
+          break;
+        case 'f':
+        case 'F':
+          e.preventDefault();
+          if (!document.fullscreenElement) {
+            slideshowMode.requestFullscreen();
+          }
+          break;
+      }
+    });
+
+    // Handle fullscreen exit
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement && slideshowMode && slideshowMode.classList.contains('active')) {
+        // User exited fullscreen with browser controls, keep slideshow active
+      }
+    });
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', initSlideshow);
+  </script>
+</body>
+</html>
